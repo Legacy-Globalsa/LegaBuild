@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" fill="none">
+  <!-- Hexagonal icon -->
+  <g transform="translate(5, 3) scale(0.55)">
+    <!-- Outer hexagon frame - charcoal -->
+    <path d="M40 5 L65 18 L65 45 L40 58 L15 45 L15 18 Z" fill="#2D2D2D"/>
+    <!-- Inner building shape - orange -->
+    <path d="M40 15 L55 23 L55 42 L40 50 L25 42 L25 23 Z" fill="#E8891E"/>
+    <!-- Building detail lines -->
+    <path d="M40 15 L40 50" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M25 30 L55 30" stroke="#2D2D2D" stroke-width="1.5"/>
+    <!-- Arrow/roof accent -->
+    <path d="M32 20 L40 15 L48 20" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- LEGA text - orange -->
+  <text x="52" y="33" font-family="'Outfit', 'Segoe UI', sans-serif" font-weight="600" font-size="26" fill="#E8891E" letter-spacing="1">LEGA</text>
+  <!-- BUILD text - white -->
+  <text x="132" y="33" font-family="'Outfit', 'Segoe UI', sans-serif" font-weight="700" font-size="26" fill="#FFFFFF" letter-spacing="1">BUILD</text>
+</svg>
