@@ -243,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
   background: none;
   padding: 4px;
   border: none;
-  z-index: 101;
+  z-index: 201;
 }
 
 .mobile-toggle span {
@@ -262,6 +262,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 .mobile-toggle.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile fullscreen overlay — sibling to nav-main */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(17, 17, 17, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 0.35s var(--transition-smooth),
+              visibility 0.35s var(--transition-smooth),
+              transform 0.35s var(--transition-smooth);
+  pointer-events: none;
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-overlay-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
 }
 
 /* ===== Page Container ===== */
@@ -1157,26 +1193,27 @@ h1, h2, h3, h4, h5, h6 {
   .why-content { flex-direction: column; }
   .why-right { height: 350px; width: 100%; }
   .contact-grid { gap: 2rem; }
-}
 
-@media (max-width: 768px) {
+  /* Hide desktop nav links, show hamburger and mobile overlay */
   .nav-links {
     display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(17, 17, 17, 0.97);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    z-index: 200;
   }
 
-  .nav-links.open {
+  .mobile-toggle {
     display: flex;
   }
 
+  .mobile-overlay {
+    display: flex;
+  }
+
+  .hero-content {
+    padding: 0 2rem;
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 768px) {
   .mobile-toggle {
     display: flex;
   }
@@ -1204,7 +1241,28 @@ h1, h2, h3, h4, h5, h6 {
   .hero-title { font-size: 2.2rem; }
   .hero-actions { flex-direction: column; }
   .hero-content { padding: 0 1.5rem; margin-left: 0; max-width: 100%; align-items: center; text-align: center; }
+
+  /* Replace directional left-side gradient with uniform overlay when hero text is centered */
+  .spline-overlay {
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(17, 17, 17, 0.55) 0%, rgba(17, 17, 17, 0.75) 70%, rgba(17, 17, 17, 0.9) 100%);
+  }
+
+  .hero-stagger {
+    transform: translateY(20px);
+  }
+  .hero-reveal .hero-stagger {
+    transform: translateY(0);
+  }
+
   .services-section,
   .industries-section,
   .contact-section { padding: 6rem 1.5rem 3rem; }
+
+  .page-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1.5rem;
+  }
 }
